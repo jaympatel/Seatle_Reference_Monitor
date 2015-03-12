@@ -1,0 +1,26 @@
+#test case: two thread created for the same file
+
+def fileWrite(filename,data,offset):
+	def my():
+		if filename in listfiles():
+			removefile(filename)
+		myfile=openfile(filename,True)  #Open a file
+		myfile.writeat(data,offset)
+	return my
+
+	
+
+try:	
+	my=fileWrite("look.txt","hellojakyajkfjasofjwjefusdlflksajfioejeskfsfsdFSDFD",0)
+#crete a new thread
+	createthread(my)	
+
+
+#crete a new thread for the same file	
+	my1=fileWrite("look.txt","jakyajkfjasofjwjefusdlflksajfioejeskfsfsdFSDFD123466",0)
+
+	createthread(my1)
+	
+
+except:
+	log("Security Policy not thread safe")

@@ -1,0 +1,26 @@
+if "look.txt" in listfiles():
+  removefile("look.txt")
+myfile=openfile("look.txt",True)  #Open a file
+
+#write something
+myfile.writeat("hellotest1234567890world",0)
+size=15
+#set maximum file size allowed to 15
+myfile.setmaxfilesize(size)
+
+
+#Close the file
+myfile.close()
+
+myfile=openfile("look.txt",True)  #Open a file
+
+#write something
+myfile.writeat("REWRITETESTTestgrfdgrgrtg2121",7)
+
+
+data1=myfile.readat(None,0)
+
+if(len(data1)==size):
+	pass
+else:
+	log("Close and reopen file does not retain the maxfilesize")
