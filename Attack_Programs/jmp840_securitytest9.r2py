@@ -1,0 +1,25 @@
+#test caase: basic write operation with file size
+
+
+if "look.txt" in listfiles():
+  removefile("look.txt")
+myfile=openfile("look.txt",True)  #Open a file
+
+#write something
+myfile.writeat("Test12345868test344343434343",0)
+
+#set maximum file size allowed to 10
+myfile.setmaxfilesize(20)
+
+#the following writeat offset and data is within filesize limit, so security layer should not block it
+try:
+  myfile.writeat("Testing",2)
+except SeekPastEndOfFileError:
+  log("Security layer failed because it blocked a valid write operation \n")
+else:
+  #user is allowed to write if its at valid place
+  pass
+
+
+#Close the file
+myfile.close()

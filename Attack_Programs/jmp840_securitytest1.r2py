@@ -1,0 +1,12 @@
+#test case: basic write operation
+
+if "testfile.txt" in listfiles():
+  removefile("testfile.txt")
+myfile=openfile("testfile.txt",True)  #Open a file
+
+# put some initial data in the file.
+try:
+	myfile.writeat("test12345346",0)
+except:
+	log("Basic Write operation not working. Security Layer not implemented correctly")
+myfile.close()
