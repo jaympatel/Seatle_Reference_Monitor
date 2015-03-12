@@ -1,3 +1,17 @@
+"""
+This security layer interposes on a textfile 
+and gives it open, close, read and write access.
+However, a user cannot start the document with the letters,
+MZ.
+If a user tries to the security layer will raise an exception.
+Note:
+  This security layer uses encasementlib.r2py, restrictions.default, repy.py and python
+  Also you need to give it an application to run.
+  This security layer never runs explicitly but instead interposes functions
+  from above layers.
+
+"""
+
 class SecureFile():
 	def __init__(self,file,filename):
 	
